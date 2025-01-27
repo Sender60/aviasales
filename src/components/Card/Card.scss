@@ -1,0 +1,47 @@
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dfe5ec;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: white;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+
+  &-content-header {
+    display: flex;
+    justify-content: space-between;
+
+    &-price {
+      color: #2196f3;
+      font-size: 24px;
+    }
+  }
+
+  &-content-body-variant1 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-content-body-variant2 {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.label {
+  color: gray;
+  display: block;
+}
+
+span {
+  text-transform: uppercase;
+  margin: 0px 10px;
+}
