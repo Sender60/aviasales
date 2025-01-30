@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Filter.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCheckbox } from '../../redux/reducers/filterSlice';
 
 export default function Filter() {
-  const [checkbox, setCheckbox] = useState({
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false,
-    checkbox4: false,
-    checkbox5: false,
-  });
+  const dispatch = useDispatch();
+  const { checkbox } = useSelector((state) => state.filter);
 
   const handleCheckboxChange = (event) => {
     const { id, checked } = event.target;
-    setCheckbox((prevCheckbox) => ({ ...prevCheckbox, [id]: checked }));
-    console.log(checkbox);
+    const checkboxChecked = { id, checked };
+    dispatch(setCheckbox(checkboxChecked));
   };
 
   return (
     <div className="filter">
       <h4 className="filter-title">Количество пересадок</h4>
       <div className="filter-checkbox">
-        <input id="checkbox1" type="checkbox" className="promoted-input-checkbox" onChange={handleCheckboxChange} />
+        <input
+          id="checkbox1"
+          type="checkbox"
+          className="promoted-input-checkbox"
+          onChange={handleCheckboxChange}
+          checked={checkbox.checkbox1}
+        />
         <svg>
           <use href="#checkmark-28" />
         </svg>
@@ -32,7 +35,13 @@ export default function Filter() {
         </svg>
       </div>
       <div className="filter-checkbox">
-        <input id="checkbox2" type="checkbox" className="promoted-input-checkbox" onChange={handleCheckboxChange} />
+        <input
+          id="checkbox2"
+          type="checkbox"
+          className="promoted-input-checkbox"
+          onChange={handleCheckboxChange}
+          checked={checkbox.checkbox2}
+        />
         <svg>
           <use href="#checkmark-28" />
         </svg>
@@ -44,7 +53,13 @@ export default function Filter() {
         </svg>
       </div>
       <div className="filter-checkbox">
-        <input id="checkbox3" type="checkbox" className="promoted-input-checkbox" onChange={handleCheckboxChange} />
+        <input
+          id="checkbox3"
+          type="checkbox"
+          className="promoted-input-checkbox"
+          onChange={handleCheckboxChange}
+          checked={checkbox.checkbox3}
+        />
         <svg>
           <use href="#checkmark-28" />
         </svg>
@@ -56,7 +71,13 @@ export default function Filter() {
         </svg>
       </div>
       <div className="filter-checkbox">
-        <input id="checkbox4" type="checkbox" className="promoted-input-checkbox" onChange={handleCheckboxChange} />
+        <input
+          id="checkbox4"
+          type="checkbox"
+          className="promoted-input-checkbox"
+          onChange={handleCheckboxChange}
+          checked={checkbox.checkbox4}
+        />
         <svg>
           <use href="#checkmark-28" />
         </svg>
@@ -68,7 +89,13 @@ export default function Filter() {
         </svg>
       </div>
       <div className="filter-checkbox">
-        <input id="checkbox5" type="checkbox" className="promoted-input-checkbox" onChange={handleCheckboxChange} />
+        <input
+          id="checkbox5"
+          type="checkbox"
+          className="promoted-input-checkbox"
+          onChange={handleCheckboxChange}
+          checked={checkbox.checkbox5}
+        />
         <svg>
           <use href="#checkmark-28" />
         </svg>

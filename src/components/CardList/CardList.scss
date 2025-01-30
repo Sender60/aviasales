@@ -16,23 +16,11 @@ $color: #2196f3;
       align-items: center;
       flex: 1;
       background-color: white;
-      width: calc(100% / 3);
       height: 50px;
       text-align: center;
       line-height: 50px;
       border: 1px solid #dfe5ec;
-      &:nth-child(2) {
-        border-left: none;
-        border-right: none;
-      }
-      &:nth-child(1) {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-      }
-      &:nth-child(3) {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-      }
+      width: 100%;
       &:hover {
         background-color: #f1fcff;
       }
@@ -42,6 +30,20 @@ $color: #2196f3;
       }
     }
   }
+}
+
+li {
+  width: 100%;
+}
+
+li:first-child > button {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+li:last-child > button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .card-list-button {
