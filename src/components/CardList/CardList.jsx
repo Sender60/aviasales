@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './CardList.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSort } from '../../redux/reducers/sortSlice';
+import { addTickets, setStop } from '../../redux/reducers/ticketSlice';
 import Card from '../Card/Card';
+import { useGetTicketsQuery, useGetSearchIdQuery } from '../../redux/api';
 
 export default function CardList() {
   const cards = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
   const dispatch = useDispatch();
   const { sort } = useSelector((state) => state.sort);
+  const { tickets: qwe } = useSelector((state) => state.ticket);
+
+  const { data: searchIdTickets } = useGetSearchIdQuery();
+  const { data: tickets } = useGetTicketsQuery(searchIdTickets, {
+    skip: !searchIdTickets,
+  });
+
+  const fetchTickets = async () => {
+    if (searchIdTickets && tickets && !tickets.stop) {
+      console.log(tickets.tickets);
+      dispatch(addTickets(tickets.tickets));
+      if (tickets.stop) {
+        dispatch(setStop(true));
+      } else {
+        await fetchTickets();
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchTickets();
+    console.log(qwe.length);
+  }, [searchIdTickets]);
 
   return (
     <div className="content">
@@ -43,8 +69,8 @@ export default function CardList() {
         </ul>
       </div>
       <ul className="card-list">
-        {cards.map((card) => (
-          <Card key={card.id} />
+        {cards.map(() => (
+          <Card key={uuidv4()} />
         ))}
       </ul>
       <button type="button" className="card-list-button">

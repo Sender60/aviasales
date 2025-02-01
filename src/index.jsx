@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import App from './App';
 
-console.log(store.getState());
+store.subscribe(() => {
+  console.log('Store изменен:', store.getState());
+});
+console.log(typeof store.getState().ticket.tickets);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

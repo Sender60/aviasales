@@ -23,20 +23,6 @@ export default function Card({ id }) {
             <span>HKG, JNB</span>
           </div>
         </div>
-        <div className="card-item-content-body-variant2">
-          <div className="card-item-content-body-time">
-            <span className="label">MOW-HKT</span>
-            <span>11:20-00:50</span>
-          </div>
-          <div className="card-item-content-body-travel-time">
-            <span className="label">В ПУТИ</span>
-            <span>13ч 30м</span>
-          </div>
-          <div className="card-item-content-body-transfer">
-            <span className="label">1 ПЕРЕСАДКА</span>
-            <span>HKG</span>
-          </div>
-        </div>
       </div>
     </li>
   );
