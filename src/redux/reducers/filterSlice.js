@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   checkbox: {
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false,
-    checkbox4: false,
-    checkbox5: false,
+    checkbox1: true,
+    checkbox2: true,
+    checkbox3: true,
+    checkbox4: true,
+    checkbox5: true,
   },
 };
 
