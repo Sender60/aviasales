@@ -18,16 +18,28 @@ export default function Filter() {
       <h4 className="filter-title">Количество пересадок</h4>
       <div className="filter-checkbox">
         <input
-          id="checkbox1"
+          id="allTickets"
           type="checkbox"
           className="promoted-input-checkbox"
           onChange={handleCheckboxChange}
-          checked={checkbox.checkbox1}
+          checked={checkbox.allTickets}
         />
         <svg>
           <use href="#checkmark-28" />
         </svg>
-        <label htmlFor="checkbox1">Все</label>
+        <label htmlFor="allTickets">Все</label>
+        <svg style={{ display: 'none' }}>
+          <symbol id="checkmark-28" viewBox="0 0 24 24">
+            <path fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1" />
+          </symbol>
+        </svg>
+      </div>
+      <div className="filter-checkbox">
+        <input id="noStop" type="checkbox" className="promoted-input-checkbox" onChange={handleCheckboxChange} checked={checkbox.noStop} />
+        <svg>
+          <use href="#checkmark-28" />
+        </svg>
+        <label htmlFor="noStop">Без пересадок</label>
         <svg style={{ display: 'none' }}>
           <symbol id="checkmark-28" viewBox="0 0 24 24">
             <path fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1" />
@@ -36,16 +48,16 @@ export default function Filter() {
       </div>
       <div className="filter-checkbox">
         <input
-          id="checkbox2"
+          id="oneStop"
           type="checkbox"
           className="promoted-input-checkbox"
           onChange={handleCheckboxChange}
-          checked={checkbox.checkbox2}
+          checked={checkbox.oneStop}
         />
         <svg>
           <use href="#checkmark-28" />
         </svg>
-        <label htmlFor="checkbox2">Без пересадок</label>
+        <label htmlFor="oneStop">1 пересадка</label>
         <svg style={{ display: 'none' }}>
           <symbol id="checkmark-28" viewBox="0 0 24 24">
             <path fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1" />
@@ -54,16 +66,16 @@ export default function Filter() {
       </div>
       <div className="filter-checkbox">
         <input
-          id="checkbox3"
+          id="twoStop"
           type="checkbox"
           className="promoted-input-checkbox"
           onChange={handleCheckboxChange}
-          checked={checkbox.checkbox3}
+          checked={checkbox.twoStop}
         />
         <svg>
           <use href="#checkmark-28" />
         </svg>
-        <label htmlFor="checkbox3">1 пересадка</label>
+        <label htmlFor="twoStop">2 пересадка</label>
         <svg style={{ display: 'none' }}>
           <symbol id="checkmark-28" viewBox="0 0 24 24">
             <path fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1" />
@@ -72,34 +84,16 @@ export default function Filter() {
       </div>
       <div className="filter-checkbox">
         <input
-          id="checkbox4"
+          id="threeStop"
           type="checkbox"
           className="promoted-input-checkbox"
           onChange={handleCheckboxChange}
-          checked={checkbox.checkbox4}
+          checked={checkbox.threeStop}
         />
         <svg>
           <use href="#checkmark-28" />
         </svg>
-        <label htmlFor="checkbox4">2 пересадка</label>
-        <svg style={{ display: 'none' }}>
-          <symbol id="checkmark-28" viewBox="0 0 24 24">
-            <path fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1" />
-          </symbol>
-        </svg>
-      </div>
-      <div className="filter-checkbox">
-        <input
-          id="checkbox5"
-          type="checkbox"
-          className="promoted-input-checkbox"
-          onChange={handleCheckboxChange}
-          checked={checkbox.checkbox5}
-        />
-        <svg>
-          <use href="#checkmark-28" />
-        </svg>
-        <label htmlFor="checkbox5">3 пересадка</label>
+        <label htmlFor="threeStop">3 пересадка</label>
         <svg style={{ display: 'none' }}>
           <symbol id="checkmark-28" viewBox="0 0 24 24">
             <path fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1" />

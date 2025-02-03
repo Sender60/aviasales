@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   checkbox: {
-    checkbox1: true,
-    checkbox2: true,
-    checkbox3: true,
-    checkbox4: true,
-    checkbox5: true,
+    allTickets: true,
+    noStop: true,
+    oneStop: true,
+    twoStop: true,
+    threeStop: true,
   },
 };
 
@@ -15,22 +15,19 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     setCheckbox(state, action) {
-      if (action.payload.id === 'checkbox1' && action.payload.checked) {
-        return { ...state, checkbox: { checkbox1: true, checkbox2: true, checkbox3: true, checkbox4: true, checkbox5: true } };
+      if (action.payload.id === 'allTickets' && action.payload.checked) {
+        return { ...state, checkbox: { allTickets: true, noStop: true, oneStop: true, twoStop: true, threeStop: true } };
       }
-      if (action.payload.id === 'checkbox1' && !action.payload.checked) {
-        return { ...state, checkbox: { checkbox1: false, checkbox2: false, checkbox3: false, checkbox4: false, checkbox5: false } };
+      if (action.payload.id === 'allTickets' && !action.payload.checked) {
+        return { ...state, checkbox: { allTickets: false, noStop: false, oneStop: false, twoStop: false, threeStop: false } };
       }
       const updateState = { ...state, checkbox: { ...state.checkbox, [action.payload.id]: action.payload.checked } };
       const allChecked =
-        updateState.checkbox.checkbox2 &&
-        updateState.checkbox.checkbox3 &&
-        updateState.checkbox.checkbox4 &&
-        updateState.checkbox.checkbox5;
-      if (action.payload.id !== 'checkbox1' && allChecked) {
-        return { ...state, checkbox: { ...state.checkbox, checkbox1: true, [action.payload.id]: action.payload.checked } };
+        updateState.checkbox.noStop && updateState.checkbox.oneStop && updateState.checkbox.twoStop && updateState.checkbox.threeStop;
+      if (action.payload.id !== 'allTickets' && allChecked) {
+        return { ...state, checkbox: { ...state.checkbox, allTickets: true, [action.payload.id]: action.payload.checked } };
       }
-      return { ...state, checkbox: { ...state.checkbox, checkbox1: false, [action.payload.id]: action.payload.checked } };
+      return { ...state, checkbox: { ...state.checkbox, allTickets: false, [action.payload.id]: action.payload.checked } };
     },
   },
 });

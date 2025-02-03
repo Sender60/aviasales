@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  sort: 'cheap',
+  sort: 'price',
 };
 
 const sortSlice = createSlice({
