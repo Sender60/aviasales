@@ -50,7 +50,7 @@ export default function CardList() {
     return 0;
   });
 
-  const { data: searchIdTickets, isLoading } = useGetSearchIdQuery();
+  const { data: searchIdTickets } = useGetSearchIdQuery();
   const {
     data: tickets,
     refetch,
@@ -74,26 +74,6 @@ export default function CardList() {
       }
     }
   }, [searchIdTickets, stop, tickets, error]);
-
-  const renderContent = () => {
-    if (stop && !isLoading) {
-      return (
-        <>
-          <ul className="card-list">
-            {sortedFilteredCards.slice(0, visibleTickets).map((card) => (
-              <Card key={uuidv4()} tickets={card} />
-            ))}
-          </ul>
-          {sortedFilteredCards.length > visibleTickets && (
-            <button onClick={() => setVisibleTickets(visibleTickets + 5)} type="button" className="card-list-button">
-              Показать ещё 5 билетов!
-            </button>
-          )}
-        </>
-      );
-    }
-    return <span className="loader" />;
-  };
 
   return (
     <div className="content">
@@ -129,7 +109,22 @@ export default function CardList() {
         </ul>
       </div>
       {Object.keys(checkbox).every((key) => !checkbox[key]) && <div>Рейсов, подходящих под заданные фильтры, не найдено</div>}
-      {renderContent()}
+      {!stop && !Object.keys(checkbox).every((key) => !checkbox[key]) && (
+        <div className="loader">
+          <span>Загрузка всех билетов</span>
+          <div className="dot-flashing" />
+        </div>
+      )}
+      <ul className="card-list">
+        {sortedFilteredCards.slice(0, visibleTickets).map((card) => (
+          <Card key={uuidv4()} tickets={card} />
+        ))}
+      </ul>
+      {sortedFilteredCards.length > visibleTickets && (
+        <button onClick={() => setVisibleTickets(visibleTickets + 5)} type="button" className="card-list-button">
+          Показать ещё 5 билетов!
+        </button>
+      )}
     </div>
   );
 }
